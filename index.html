@@ -9,9 +9,7 @@
 <title>ګولډن خیاطي او رخت پلورنځی</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -131,29 +129,12 @@ button {
     margin: 5px 2px;
 }
 
-.save {
-    background: #087f8c;
-    color: white;
-}
+.save { background: #087f8c; color: white; }
+.clear { background: #e9f0f4; color: #18394b; }
+.edit { background: #fff0c9; color: #74500c; }
+.delete { background: #ffe6e8; color: #a52d3d; }
 
-.clear {
-    background: #e9f0f4;
-    color: #18394b;
-}
-
-.edit {
-    background: #fff0c9;
-    color: #74500c;
-}
-
-.delete {
-    background: #ffe6e8;
-    color: #a52d3d;
-}
-
-.search {
-    margin-bottom: 15px;
-}
+.search { margin-bottom: 15px; }
 
 .customer {
     border: 1px solid #dce8ed;
@@ -173,27 +154,69 @@ button {
     margin: 7px 0;
 }
 
-.actions {
+.actions { margin-top: 10px; }
+
+.payment-box {
+    background: #f0f8f7;
+    border: 1px solid #cce5df;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    line-height: 2;
+}
+
+.payment-history {
+    background: #fffaf0;
+    border: 1px solid #f0dfb8;
+    border-radius: 10px;
+    padding: 10px;
     margin-top: 10px;
 }
 
-@media(max-width:700px) {
-    .measurements {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    header h1 {
-        font-size: 21px;
-    }
-
-    .phone {
-        font-size: 16px;
-    }
+.payment-history p {
+    border-bottom: 1px dashed #e4d5b5;
+    padding-bottom: 5px;
 }
+
+.balance {
+    color: #b33b35;
+    font-weight: 900;
+}
+
+.paid {
+    color: #087f54;
+    font-weight: 900;
+}
+
+@media(max-width:700px) {
+    .measurements { grid-template-columns: repeat(2, 1fr); }
+    .form-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 21px; }
+    .phone { font-size: 16px; }
+}
+
+.footer {
+    background: linear-gradient(120deg, #102f46, #087f8c);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 25px;
+    line-height: 2;
+}
+
+.footer h3 {
+    color: #ffe49b;
+    border: none;
+    margin: 0 0 8px;
+}
+
+.footer a {
+    color: #ffe49b;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.footer a:hover { text-decoration: underline; }
 </style>
 </head>
 
@@ -201,9 +224,7 @@ button {
 
 <header>
     <h1>✂ ګولډن خیاطي او رخت پلورنځی</h1>
-    <div class="phone">
-        0765221843 // 0773508923
-    </div>
+    <div class="phone">0765221843 // 0773508923</div>
 </header>
 
 <div class="container">
@@ -216,7 +237,6 @@ button {
         <h3>د مشتری معلومات</h3>
 
         <div class="form-grid">
-
             <div>
                 <label>د مشتری نوم</label>
                 <input type="text" id="name" required>
@@ -236,13 +256,11 @@ button {
                 <label>د ثبت نېټه</label>
                 <input type="date" id="date">
             </div>
-
         </div>
 
         <h3>د خیاطۍ اندازې</h3>
 
         <div class="measurements">
-
             <div class="measure-box">
                 <label>خت</label>
                 <input id="length">
@@ -282,28 +300,49 @@ button {
                 <label>خولې</label>
                 <input id="khole">
             </div>
-
         </div>
 
         <h3>د لستوڼو ډولونه</h3>
-
         <label>د مشتری د خوښې لستوڼي ولیکئ</label>
         <textarea id="sleeveType" rows="3"
         placeholder="دلته د لستوڼو ډول ولیکئ..."></textarea>
 
         <h3>د غاړې ډولونه</h3>
-
         <label>د مشتری د خوښې غاړه ولیکئ</label>
         <textarea id="neckType" rows="3"
         placeholder="دلته د غاړې ډول ولیکئ..."></textarea>
 
         <h3>نور معلومات</h3>
-
         <label>یادښتونه</label>
         <textarea id="notes" rows="3"
         placeholder="نورې غوښتنې او معلومات..."></textarea>
 
-        <br><br>
+        <h3>د پیسو حساب</h3>
+
+        <div class="form-grid">
+            <div>
+                <label>د فرمایش ټول قیمت</label>
+                <input type="number" id="totalPrice"
+                min="0" step="any" placeholder="ټول قیمت ولیکئ">
+            </div>
+
+            <div>
+                <label id="paymentLabel">لومړنۍ ورکړه</label>
+                <input type="number" id="paymentAmount"
+                min="0" step="any" placeholder="د ورکړې اندازه">
+            </div>
+
+            <div>
+                <label>د ورکړې نېټه</label>
+                <input type="date" id="paymentDate">
+            </div>
+        </div>
+
+        <p id="paymentHelp">
+            د نوي مشتری لپاره لومړنۍ ورکړه دلته ولیکئ.
+        </p>
+
+        <br>
 
         <button type="submit" class="save" id="saveButton">
             معلومات ساتل
@@ -319,8 +358,7 @@ button {
 <section class="card">
     <h2>د مشتریانو ثبت شوي معلومات</h2>
 
-    <input type="text" id="search"
-    class="search"
+    <input type="text" id="search" class="search"
     placeholder="د نوم، موبایل یا سریال له لارې لټون...">
 
     <div id="customerList"></div>
@@ -335,7 +373,8 @@ button {
         بیک‌اپ ښکته کول
     </button>
 
-    <button class="clear" onclick="document.getElementById('backupFile').click()">
+    <button class="clear"
+    onclick="document.getElementById('backupFile').click()">
         بیک‌اپ واردول
     </button>
 
@@ -348,10 +387,19 @@ button {
 <script>
 let customers = [];
 let editId = null;
+let currentCustomer = null;
 
 const DB_NAME = "GoldenTailoringDB";
 const STORE_NAME = "customers";
 let database;
+
+function todayDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
@@ -378,8 +426,7 @@ function openDatabase() {
 }
 
 function getStore(mode = "readonly") {
-    return database
-        .transaction(STORE_NAME, mode)
+    return database.transaction(STORE_NAME, mode)
         .objectStore(STORE_NAME);
 }
 
@@ -432,20 +479,35 @@ function fillForm(data) {
     fields.forEach(id => {
         document.getElementById(id).value = data[id] || "";
     });
+
+    document.getElementById("totalPrice").value =
+        data.totalPrice ?? "";
+
+    // د پخوانیو ورکړو تاریخچه نه پاکېږي.
+    document.getElementById("paymentAmount").value = "";
+    document.getElementById("paymentDate").value = todayDate();
 }
 
 function clearForm() {
     document.getElementById("customerForm").reset();
-    document.getElementById("date").value =
-        new Date().toISOString().slice(0, 10);
+
+    document.getElementById("date").value = todayDate();
+    document.getElementById("paymentDate").value = todayDate();
 
     editId = null;
+    currentCustomer = null;
 
     document.getElementById("formTitle").textContent =
         "د نوي مشتری ثبتول";
 
     document.getElementById("saveButton").textContent =
         "معلومات ساتل";
+
+    document.getElementById("paymentLabel").textContent =
+        "لومړنۍ ورکړه";
+
+    document.getElementById("paymentHelp").textContent =
+        "د نوي مشتری لپاره لومړنۍ ورکړه دلته ولیکئ.";
 }
 
 document.getElementById("customerForm")
@@ -460,8 +522,76 @@ document.getElementById("customerForm")
         return;
     }
 
+    const totalPrice = Number(
+        document.getElementById("totalPrice").value || 0
+    );
+
+    const paymentAmount = Number(
+        document.getElementById("paymentAmount").value || 0
+    );
+
+    const paymentDate =
+        document.getElementById("paymentDate").value || todayDate();
+
+    if (totalPrice < 0 || paymentAmount < 0) {
+        alert("د پیسو اندازه منفي نه شي کېدای.");
+        return;
+    }
+
+    if (paymentAmount > 0 && !document.getElementById("paymentDate").value) {
+        alert("د ورکړې نېټه وټاکئ.");
+        return;
+    }
+
+    data.totalPrice = totalPrice;
+
     if (editId !== null) {
+        const oldCustomer = currentCustomer;
+
+        if (!oldCustomer) {
+            alert("د مشتری معلومات پیدا نه شول.");
+            return;
+        }
+
+        const oldPayments = Array.isArray(oldCustomer.payments)
+            ? oldCustomer.payments
+            : [];
+
+        const alreadyPaid = oldPayments.reduce(
+            (sum, payment) => sum + Number(payment.amount || 0), 0
+        );
+
+        const remaining = totalPrice - alreadyPaid;
+
+        if (paymentAmount > remaining) {
+            alert("دا ورکړه د پاتې پیسو څخه زیاته ده.");
+            return;
+        }
+
         data.id = editId;
+        data.payments = [...oldPayments];
+
+        if (paymentAmount > 0) {
+            data.payments.push({
+                amount: paymentAmount,
+                date: paymentDate
+            });
+        }
+
+    } else {
+        if (paymentAmount > totalPrice) {
+            alert("لومړنۍ ورکړه د ټول قیمت څخه زیاته ده.");
+            return;
+        }
+
+        data.payments = [];
+
+        if (paymentAmount > 0) {
+            data.payments.push({
+                amount: paymentAmount,
+                date: paymentDate
+            });
+        }
     }
 
     await saveCustomer(data);
@@ -471,6 +601,10 @@ document.getElementById("customerForm")
 
     alert("د مشتری معلومات په بریالیتوب وساتل شول.");
 });
+
+function money(value) {
+    return Number(value || 0).toLocaleString("en-US");
+}
 
 async function showCustomers() {
 
@@ -490,13 +624,23 @@ async function showCustomers() {
     );
 
     if (filtered.length === 0) {
-        list.innerHTML = "<p>معلومات ونه موندل شول.</p>";
+        list.textContent = "معلومات ونه موندل شول.";
         return;
     }
 
     filtered.sort((a, b) => b.id - a.id);
 
     filtered.forEach(c => {
+
+        const payments = Array.isArray(c.payments) ? c.payments : [];
+
+        const totalPrice = Number(c.totalPrice || 0);
+
+        const totalPaid = payments.reduce(
+            (sum, payment) => sum + Number(payment.amount || 0), 0
+        );
+
+        const remaining = totalPrice - totalPaid;
 
         const box = document.createElement("div");
         box.className = "customer";
@@ -529,12 +673,53 @@ async function showCustomers() {
         const notes = document.createElement("p");
         notes.textContent = "یادښت: " + (c.notes || "—");
 
+        const paymentBox = document.createElement("div");
+        paymentBox.className = "payment-box";
+
+        const priceLine = document.createElement("p");
+        priceLine.textContent =
+            "د فرمایش ټول قیمت: " + money(totalPrice);
+
+        const paidLine = document.createElement("p");
+        paidLine.className = "paid";
+        paidLine.textContent =
+            "ټولې ورکړې: " + money(totalPaid);
+
+        const remainingLine = document.createElement("p");
+        remainingLine.className = "balance";
+        remainingLine.textContent =
+            "پاتې پیسې: " + money(remaining);
+
+        paymentBox.append(priceLine, paidLine, remainingLine);
+
+        const history = document.createElement("div");
+        history.className = "payment-history";
+
+        const historyTitle = document.createElement("strong");
+        historyTitle.textContent = "د ورکړو تاریخچه";
+        history.appendChild(historyTitle);
+
+        if (payments.length === 0) {
+            const empty = document.createElement("p");
+            empty.textContent = "تر اوسه هېڅ ورکړه نه ده ثبت شوې.";
+            history.appendChild(empty);
+        } else {
+            payments.forEach((payment, index) => {
+                const line = document.createElement("p");
+                line.textContent =
+                    (index + 1) + ". ورکړه: " +
+                    money(payment.amount) +
+                    " | نېټه: " + (payment.date || "—");
+                history.appendChild(line);
+            });
+        }
+
         const actions = document.createElement("div");
         actions.className = "actions";
 
         const edit = document.createElement("button");
         edit.className = "edit";
-        edit.textContent = "بدلول";
+        edit.textContent = "بدلول / نوې ورکړه";
         edit.onclick = () => editCustomer(c.id);
 
         const remove = document.createElement("button");
@@ -543,7 +728,11 @@ async function showCustomers() {
         remove.onclick = () => removeCustomer(c.id);
 
         actions.append(edit, remove);
-        box.append(title, details, measures, styles, notes, actions);
+
+        box.append(
+            title, details, measures, styles, notes,
+            paymentBox, history, actions
+        );
 
         list.appendChild(box);
     });
@@ -555,24 +744,32 @@ async function editCustomer(id) {
 
     if (!customer) return;
 
+    currentCustomer = customer;
     fillForm(customer);
     editId = id;
 
     document.getElementById("formTitle").textContent =
-        "د مشتری معلومات بدلول";
+        "د مشتری معلومات بدلول او نوې ورکړه";
 
     document.getElementById("saveButton").textContent =
-        "بدلونونه ساتل";
+        "بدلونونه او ورکړه ساتل";
+
+    document.getElementById("paymentLabel").textContent =
+        "نوې ورکړه";
+
+    document.getElementById("paymentHelp").textContent =
+        "دلته یوازې د مشتری نوې ورکړه ولیکئ؛ پخوانۍ ورکړې به خوندي پاتې شي.";
 
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 async function removeCustomer(id) {
 
-    if (!confirm("ایا د دې مشتری معلومات حذف کړئ؟")) return;
+    if (!confirm("ایا د دې مشتری معلومات او د هغه د پیسو تاریخچه حذف کړئ؟")) {
+        return;
+    }
 
     await deleteCustomer(id);
-
     await showCustomers();
 
     alert("معلومات حذف شول.");
@@ -617,6 +814,11 @@ async function restoreData(event) {
         for (const customer of data) {
             const copy = { ...customer };
             delete copy.id;
+
+            if (!Array.isArray(copy.payments)) {
+                copy.payments = [];
+            }
+
             await saveCustomer(copy);
         }
 
@@ -634,8 +836,8 @@ async function restoreData(event) {
     try {
         await openDatabase();
 
-        document.getElementById("date").value =
-            new Date().toISOString().slice(0, 10);
+        document.getElementById("date").value = todayDate();
+        document.getElementById("paymentDate").value = todayDate();
 
         await showCustomers();
 
@@ -644,14 +846,29 @@ async function restoreData(event) {
     }
 })();
 </script>
+
 <script>
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-            navigator.serviceWorker.register("./sw.js")
-                .then(() => console.log("Service Worker فعال شو"))
-                .catch(error => console.log("Service Worker Error:", error));
-        });
-    }
-    </script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("Service Worker فعال شو"))
+            .catch(error => console.log("Service Worker Error:", error));
+    });
+}
+</script>
+
+<footer class="footer">
+    <h3>د ډیټابېس جوړونکی</h3>
+    <p>حاضرالله ساجد</p>
+    <p>
+        <a href="https://www.facebook.com/sajid.mangal.904"
+           target="_blank"
+           rel="noopener noreferrer">
+            زما فېسبوک ته ورشئ
+        </a>
+    </p>
+    <p>© ګولډن خیاطي او رخت پلورنځی</p>
+</footer>
+
 </body>
 </html>
