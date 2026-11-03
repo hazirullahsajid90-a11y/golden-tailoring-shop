@@ -1,0 +1,21 @@
+{
+    "name": "ګولډن خیاطي او رخت پلورنځی",
+    "short_name": "ګولډن خیاطي",
+    "description": "د مشتریانو د اندازو او معلوماتو د ثبت سیستم",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#8e44ad",
+    "orientation": "portrait",
+    "lang": "ps",
+    "dir": "rtl",
+    "icons": [
+      {
+        "src": "./icon.svg",
+        "sizes": "any",
+        "type": "image/svg+xml",
+        "purpose": "any"
+      }
+    ]
+  }

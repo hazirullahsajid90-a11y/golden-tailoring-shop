@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8e44ad">
+<title>ګولډن خیاطي او رخت پلورنځی</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f5f2, #edf1fa, #fff4df);
+    color: #18394b;
+    font-weight: bold;
+}
+
+header {
+    background: linear-gradient(120deg, #102f46, #087f8c);
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.phone {
+    margin-top: 12px;
+    font-size: 19px;
+    color: #ffe49b;
+    direction: ltr;
+    font-weight: 900;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px #17384b18;
+    border: 1px solid #dce8ed;
+}
+
+h2 {
+    color: #087f8c;
+    font-size: 21px;
+    border-bottom: 2px solid #dceeea;
+    padding-bottom: 12px;
+}
+
+h3 {
+    color: #087f8c;
+    margin-top: 25px;
+    border-bottom: 1px dashed #b9d8d8;
+    padding-bottom: 8px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbdde4;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-weight: bold;
+    outline: none;
+    background: #f9fcfd;
+}
+
+input:focus, textarea:focus {
+    border-color: #087f8c;
+    box-shadow: 0 0 0 3px #087f8c18;
+}
+
+.measurements {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.measure-box {
+    background: #eff8f7;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #d4eae5;
+}
+
+.measure-box input {
+    text-align: center;
+    font-size: 18px;
+    background: white;
+}
+
+button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-weight: 900;
+    margin: 5px 2px;
+}
+
+.save {
+    background: #087f8c;
+    color: white;
+}
+
+.clear {
+    background: #e9f0f4;
+    color: #18394b;
+}
+
+.edit {
+    background: #fff0c9;
+    color: #74500c;
+}
+
+.delete {
+    background: #ffe6e8;
+    color: #a52d3d;
+}
+
+.search {
+    margin-bottom: 15px;
+}
+
+.customer {
+    border: 1px solid #dce8ed;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 12px;
+    background: #fbfefe;
+}
+
+.customer strong {
+    color: #087f8c;
+    font-size: 17px;
+}
+
+.customer p {
+    line-height: 1.9;
+    margin: 7px 0;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+@media(max-width:700px) {
+    .measurements {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    .phone {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>✂ ګولډن خیاطي او رخت پلورنځی</h1>
+    <div class="phone">
+        0765221843 // 0773508923
+    </div>
+</header>
+
+<div class="container">
+
+<section class="card">
+    <h2 id="formTitle">د نوي مشتری ثبتول</h2>
+
+    <form id="customerForm">
+
+        <h3>د مشتری معلومات</h3>
+
+        <div class="form-grid">
+
+            <div>
+                <label>د مشتری نوم</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div>
+                <label>موبایل شمېره</label>
+                <input type="tel" id="mobile">
+            </div>
+
+            <div>
+                <label>سریال نمبر</label>
+                <input type="text" id="serial" required>
+            </div>
+
+            <div>
+                <label>د ثبت نېټه</label>
+                <input type="date" id="date">
+            </div>
+
+        </div>
+
+        <h3>د خیاطۍ اندازې</h3>
+
+        <div class="measurements">
+
+            <div class="measure-box">
+                <label>خت</label>
+                <input id="length">
+            </div>
+
+            <div class="measure-box">
+                <label>شانه</label>
+                <input id="shoulder">
+            </div>
+
+            <div class="measure-box">
+                <label>لاستوڼي</label>
+                <input id="sleeves">
+            </div>
+
+            <div class="measure-box">
+                <label>سور</label>
+                <input id="width">
+            </div>
+
+            <div class="measure-box">
+                <label>چاتې</label>
+                <input id="chate">
+            </div>
+
+            <div class="measure-box">
+                <label>غاړه</label>
+                <input id="neck">
+            </div>
+
+            <div class="measure-box">
+                <label>پرتوګ</label>
+                <input id="trouser">
+            </div>
+
+            <div class="measure-box">
+                <label>خولې</label>
+                <input id="khole">
+            </div>
+
+        </div>
+
+        <h3>د لستوڼو ډولونه</h3>
+
+        <label>د مشتری د خوښې لستوڼي ولیکئ</label>
+        <textarea id="sleeveType" rows="3"
+        placeholder="دلته د لستوڼو ډول ولیکئ..."></textarea>
+
+        <h3>د غاړې ډولونه</h3>
+
+        <label>د مشتری د خوښې غاړه ولیکئ</label>
+        <textarea id="neckType" rows="3"
+        placeholder="دلته د غاړې ډول ولیکئ..."></textarea>
+
+        <h3>نور معلومات</h3>
+
+        <label>یادښتونه</label>
+        <textarea id="notes" rows="3"
+        placeholder="نورې غوښتنې او معلومات..."></textarea>
+
+        <br><br>
+
+        <button type="submit" class="save" id="saveButton">
+            معلومات ساتل
+        </button>
+
+        <button type="button" class="clear" onclick="clearForm()">
+            نوی ثبت
+        </button>
+
+    </form>
+</section>
+
+<section class="card">
+    <h2>د مشتریانو ثبت شوي معلومات</h2>
+
+    <input type="text" id="search"
+    class="search"
+    placeholder="د نوم، موبایل یا سریال له لارې لټون...">
+
+    <div id="customerList"></div>
+</section>
+
+<section class="card">
+    <h2>د معلوماتو بیک‌اپ</h2>
+
+    <p>خپل معلومات د خوندي ساتلو لپاره ښکته کړئ.</p>
+
+    <button class="save" onclick="backupData()">
+        بیک‌اپ ښکته کول
+    </button>
+
+    <button class="clear" onclick="document.getElementById('backupFile').click()">
+        بیک‌اپ واردول
+    </button>
+
+    <input type="file" id="backupFile"
+    accept=".json" hidden onchange="restoreData(event)">
+</section>
+
+</div>
+
+<script>
+let customers = [];
+let editId = null;
+
+const DB_NAME = "GoldenTailoringDB";
+const STORE_NAME = "customers";
+let database;
+
+function openDatabase() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, 1);
+
+        request.onupgradeneeded = function(event) {
+            const db = event.target.result;
+
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME, {
+                    keyPath: "id",
+                    autoIncrement: true
+                });
+            }
+        };
+
+        request.onsuccess = function(event) {
+            database = event.target.result;
+            resolve(database);
+        };
+
+        request.onerror = () => reject(request.error);
+    });
+}
+
+function getStore(mode = "readonly") {
+    return database
+        .transaction(STORE_NAME, mode)
+        .objectStore(STORE_NAME);
+}
+
+function getAllCustomers() {
+    return new Promise((resolve, reject) => {
+        const request = getStore().getAll();
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+}
+
+function saveCustomer(customer) {
+    return new Promise((resolve, reject) => {
+        const store = getStore("readwrite");
+        const request = customer.id
+            ? store.put(customer)
+            : store.add(customer);
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+}
+
+function deleteCustomer(id) {
+    return new Promise((resolve, reject) => {
+        const request = getStore("readwrite").delete(id);
+        request.onsuccess = resolve;
+        request.onerror = () => reject(request.error);
+    });
+}
+
+const fields = [
+    "name", "mobile", "serial", "date",
+    "length", "shoulder", "sleeves", "width",
+    "chate", "neck", "trouser", "khole",
+    "sleeveType", "neckType", "notes"
+];
+
+function getFormData() {
+    const data = {};
+
+    fields.forEach(id => {
+        data[id] = document.getElementById(id).value.trim();
+    });
+
+    return data;
+}
+
+function fillForm(data) {
+    fields.forEach(id => {
+        document.getElementById(id).value = data[id] || "";
+    });
+}
+
+function clearForm() {
+    document.getElementById("customerForm").reset();
+    document.getElementById("date").value =
+        new Date().toISOString().slice(0, 10);
+
+    editId = null;
+
+    document.getElementById("formTitle").textContent =
+        "د نوي مشتری ثبتول";
+
+    document.getElementById("saveButton").textContent =
+        "معلومات ساتل";
+}
+
+document.getElementById("customerForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const data = getFormData();
+
+    if (!data.name || !data.serial) {
+        alert("د مشتری نوم او سریال نمبر ولیکئ.");
+        return;
+    }
+
+    if (editId !== null) {
+        data.id = editId;
+    }
+
+    await saveCustomer(data);
+
+    clearForm();
+    await showCustomers();
+
+    alert("د مشتری معلومات په بریالیتوب وساتل شول.");
+});
+
+async function showCustomers() {
+
+    customers = await getAllCustomers();
+
+    const search = document.getElementById("search")
+        .value.trim().toLowerCase();
+
+    const list = document.getElementById("customerList");
+    list.innerHTML = "";
+
+    const filtered = customers.filter(c =>
+        [c.name, c.mobile, c.serial]
+        .some(value =>
+            String(value || "").toLowerCase().includes(search)
+        )
+    );
+
+    if (filtered.length === 0) {
+        list.innerHTML = "<p>معلومات ونه موندل شول.</p>";
+        return;
+    }
+
+    filtered.sort((a, b) => b.id - a.id);
+
+    filtered.forEach(c => {
+
+        const box = document.createElement("div");
+        box.className = "customer";
+
+        const title = document.createElement("strong");
+        title.textContent = "نوم: " + c.name;
+
+        const details = document.createElement("p");
+        details.textContent =
+            "موبایل: " + (c.mobile || "—") +
+            " | سریال: " + c.serial +
+            " | نېټه: " + (c.date || "—");
+
+        const measures = document.createElement("p");
+        measures.textContent =
+            "خت: " + (c.length || "—") +
+            " | شانه: " + (c.shoulder || "—") +
+            " | لاستوڼي: " + (c.sleeves || "—") +
+            " | سور: " + (c.width || "—") +
+            " | چاتې: " + (c.chate || "—") +
+            " | غاړه: " + (c.neck || "—") +
+            " | پرتوګ: " + (c.trouser || "—") +
+            " | خولې: " + (c.khole || "—");
+
+        const styles = document.createElement("p");
+        styles.textContent =
+            "د لستوڼو ډول: " + (c.sleeveType || "—") +
+            " | د غاړې ډول: " + (c.neckType || "—");
+
+        const notes = document.createElement("p");
+        notes.textContent = "یادښت: " + (c.notes || "—");
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const edit = document.createElement("button");
+        edit.className = "edit";
+        edit.textContent = "بدلول";
+        edit.onclick = () => editCustomer(c.id);
+
+        const remove = document.createElement("button");
+        remove.className = "delete";
+        remove.textContent = "حذف";
+        remove.onclick = () => removeCustomer(c.id);
+
+        actions.append(edit, remove);
+        box.append(title, details, measures, styles, notes, actions);
+
+        list.appendChild(box);
+    });
+}
+
+async function editCustomer(id) {
+
+    const customer = customers.find(c => c.id === id);
+
+    if (!customer) return;
+
+    fillForm(customer);
+    editId = id;
+
+    document.getElementById("formTitle").textContent =
+        "د مشتری معلومات بدلول";
+
+    document.getElementById("saveButton").textContent =
+        "بدلونونه ساتل";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+async function removeCustomer(id) {
+
+    if (!confirm("ایا د دې مشتری معلومات حذف کړئ؟")) return;
+
+    await deleteCustomer(id);
+
+    await showCustomers();
+
+    alert("معلومات حذف شول.");
+}
+
+document.getElementById("search")
+.addEventListener("input", showCustomers);
+
+async function backupData() {
+
+    const data = await getAllCustomers();
+
+    const file = new Blob(
+        [JSON.stringify(data, null, 2)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "Golden-Tailoring-Backup.json";
+    link.click();
+
+    URL.revokeObjectURL(url);
+}
+
+async function restoreData(event) {
+
+    const file = event.target.files[0];
+    if (!file) return;
+
+    try {
+        const data = JSON.parse(await file.text());
+
+        if (!Array.isArray(data)) {
+            throw new Error("Invalid backup");
+        }
+
+        if (!confirm("ایا د بیک‌اپ معلومات وارد کړئ؟")) return;
+
+        for (const customer of data) {
+            const copy = { ...customer };
+            delete copy.id;
+            await saveCustomer(copy);
+        }
+
+        await showCustomers();
+        alert("بیک‌اپ په بریالیتوب وارد شو.");
+
+    } catch (error) {
+        alert("د بیک‌اپ فایل سم نه دی.");
+    }
+
+    event.target.value = "";
+}
+
+(async function start() {
+    try {
+        await openDatabase();
+
+        document.getElementById("date").value =
+            new Date().toISOString().slice(0, 10);
+
+        await showCustomers();
+
+    } catch (error) {
+        alert("ډیټابیس پرانیستل نه شو. په Chrome یا Edge کې یې خلاص کړئ.");
+    }
+})();
+</script>
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./sw.js")
+                .then(() => console.log("Service Worker فعال شو"))
+                .catch(error => console.log("Service Worker Error:", error));
+        });
+    }
+    </script>
+</body>
+</html>
